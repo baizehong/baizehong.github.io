@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>首页</title>
+	<style type="text/css">
+		/*body {font-size:100%;}
+		h1 {font-size:2.5em;}
+		h2 {font-size:1.875em;}
+		p {font-size:0.875em;}*/
+		a:link { text-decoration: none;color: #000000}
+		a:hover { text-decoration:underline;color: red} 
+
+		.zongti{
+			position: 					fixed;
+			left: 							0%;
+			top: 								0%;
+			width: 							100%;
+			display: 						-webkit-flex;
+			background-color: 	#FFFFF0	;
+			z-index: 						1;
+		}
+		.fenlan{
+			top: 								0px;
+			width: 							33%;
+			height: 						100%;
+			z-index: 						2;
+			display: 						flex;
+			flex-flow: 					column; 
+			/*background-color: 	#00FA9A	;*/
+		}
+		.kuai{
+			width: 							1%-2px;
+			/*height: 			100%;*/
+			z-index: 						3;
+			background-color: 	#00FF7F;
+			border:							1px solid #006400;
+		}
+		.xuanfuxianshianniu{
+			position: 					fixed;
+			left: 							0px;
+			top: 								0px;
+			z-index: 						999;
+			opacity:						0.7;
+			width: 							10%; 
+			min-width: 					5px;
+			height: 						31%; 
+		}
+		.buwei{
+			width: 							100%;
+			height: 						100%;
+		}
+		.wangzhansuoluetu{
+			width: 							1em
+		}
+	 </style>
+</head>
+<body>
+<!-- 按钮 -->
+	<div class="xuanfuxianshianniu">
+		<button id="xuanfuxianshianniuID" onclick="danji()">o
+		 </button>
+	 </div>
+<!-- 主体占用 -->
+	<div id="zongtiID1" class="zongti" style="z-index:1">
+	<!-- 第一栏 -->
+	 <div id="fenlanID1" class="fenlan" >
+	   <!-- 时间块 -->
+			<div id="shijianID1" class="kuai">
+			 </div>
+			<div>
+				<ul id="tianjiaID">
+				 </ul>
+			 </div>
+		<!-- 添加块的设置 -->
+		 	<div id="tianjiashuqianID" class="kuai">
+				<div style="display: -webkit-flex;white-space: nowrap">网址<input id="" type=text style="width: 100% ;height: 100% ;"></div>
+				<div style="display: -webkit-flex;white-space: nowrap">名称<input type=text style="width: 100% ;height: 100% ;"></div>
+				<button onclick="dianjitianjiashuqian()">添加</button>
+			 </div>
+	  </div>
+	<!-- 第二栏 -->
+	 <div id="fenlanID2" class="fenlan" >
+	   <!-- 书签块 -->
+		<div id="shuqianID1" class="kuai">
+			<div style="color: #00FF7F;background-color: #006400;">本地快捷<input id="1" type="button" value="+" onclick="xianshitianjiashuqian1" style="float: right;"></div>
+			<ul>
+				<li><a href='file://localhost/c:\\test.txt'>c:\\test.txt</a></li>
+				<li ><a href='https://github.com/'><img class="wangzhansuoluetu" src="https://github.com/favicon.ico">yishenwuyan</a></li>
+			 </ul>
+		 </div>
+
+	  </div>
+  	<!-- 第三栏 -->
+	 <div id="fenlanID3" class="fenlan" >
+	   <!-- 网页块 -->
+		<div id="wangyeID1" class="kuai">
+		  <iframe  class="buwei">
+			#document
+				<!DOCTYPE html>
+				<html>
+					<head>
+					<meta charset="utf-8">
+					<title>菜鸟教程(runoob.com)</title>
+					</head>
+					<style>
+					.tooltip {
+					    position: relative;
+					    display: inline-block;
+					    border-bottom: 1px dotted black;
+					}
+
+					.tooltip .tooltiptext {
+					    visibility: hidden;
+					    width: 120px;
+					    background-color: black;
+					    color: #fff;
+					    text-align: center;
+					    border-radius: 6px;
+					    padding: 5px 0;
+					    position: absolute;
+					    z-index: 1;
+					    top: 100%;
+					    left: 50%;
+					    margin-left: -60px;
+					    display: block;
+					    /* 淡入 - 1秒内从 0% 到 100% 显示: */
+					    opacity: 0;
+					    transition: opacity 1s;
+					}
+
+					.tooltip:hover .tooltiptext {
+					    visibility: visible;
+					    opacity: 1;
+					}
+					</style>
+					<body style="text-align:center;">
+
+					<h2>提示工具淡入效果</h2>
+					<p>鼠标移动到以下元素，提示工具会再一秒内从 0% 到 100% 完全显示。</p>
+
+					<div class="tooltip">鼠标移动到我这
+					  <span class="tooltiptext">提示文本</span>
+					</div>
+					</body>
+				</html>
+			</iframe>
+		 </div>
+	  </div>
+ </div>
+<!-- 设置 -->
+<div id="zongtiID2" class="zongti" style="z-index: 10;">
+	<button id="xuanzetianjiakuaiID" style="display: none;" click="xianshitianjiakuai">+</button>
+	<div>
+	 </div>
+
+ </div>
+
+ </body>
+<script>
+	var xianshishezhiye = 1
+// 显示设置
+		function danji(){
+			xianshishezhiye = xianshishezhiye +1
+			if (xianshishezhiye >= 3) {xianshishezhiye =1}
+			if (xianshishezhiye ==1) { document.getElementById('zongtiID2').style.display="none" }
+			if (xianshishezhiye==2) { document.getElementById('zongtiID2').style.display="initial" }
+		 }
+// 显示当前时间
+	document.getElementById("shijianID1").innerHTML=Date()
+// 显示点击添加书签
+ 	function xianshitianjiashuqian(){
+		document.getElementById('zongtiID2').style.display="initial" 
+		xianshishezhiye=
+// 点击添加书签
+	function dianjitianjiashuqian(){
+		document.getElementById()
+	}
+// 显示要添加的块
+	function xianshitianjiakuai(){
+		document.getElementById()
+	}
+// 选择要添加的块
+	function xuanzetianjiakuai(){
+		document.getElementById()
+	}
+	function xianshitianjiakuai(){
+		document.getElementById()
+
+	}
+	function xianshitianjiakuai(){
+		document.getElementById()
+
+	}
+// 添加书签的块
+	function dianjitianjia(){
+		var xinjiantiaomu=document.createElement("LI");
+		var xinjiantiaomuneirong=document.createTextNode("Water");
+		xinjiantiaomu.appendChild(xinjiantiaomuneirong);
+		document.getElementById("tianjiaID").appendChild(xinjiantiaomu);
+	}
+
+
+		
+
+// 修改字体
+	// function ziti(){
+	//  // document.getElementById("wangzhi").style.font-size="15px"
+	// }
+		// document.getElementById("links").href="http://www.baidu.com";
+		// var sj = 
+		// function yimiaojiange() {
+		//setTimeout(function(){ x.value="2 秒" }, 2000);
+		//setTimeout(function(){ x.value="4 秒" }, 4000);
+		//setTimeout(function(){ x.value="6 秒" }, 6000);
+
+		// timename=setTimeout("function();",delaytime);//循环
+
+ </script>
+</html>
