@@ -1,3 +1,3 @@
 # 白泽虹博客
 
-https://yishenwuyan.github.io/
+https://baizehong.github.io/
