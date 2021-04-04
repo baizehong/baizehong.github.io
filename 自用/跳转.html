@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META charset = 'utf-8' />
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"/>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT"/>
+<META HTTP-EQUIV="expires" CONTENT="0"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=7.0, user-scalable=7"/>
+
+	<title>本地，首页</title>
+</head>
+<body>
+	<div id="总" >
+		<div id="跳转" >
+			<div ID="本地IP" >
+				
+			</div>
+			<div id="更改meta" >
+				<input id="地址" type="text" value="" />
+				<br />
+				<input id="继续" type="submit" onclick ="跳转(0)" value="继续" />
+			</div>
+			<div ID="输出" >
+				输出
+			</div>
+			
+		</div>
+		
+	</div>
+</body>
+	<script type="text/javascript" src="常用，cookie.js" ></script>
+	<script type="text/javascript" >
+	
+function 跳转(延时)
+{
+	调试输出=document.getElementById("输出");
+	调试=调试输出.innerHTML;
+	// 判断，修改
+	{
+		// 输入
+		{
+			URL内容=指定Cookie("URL");
+			网页json=decodeURI(URL内容);//URL转原文
+		}
+		// 操作
+		{
+			if (网页json==0)
+			{
+				网页数组=[地址];
+			}
+			else
+			{
+				网页数组=eval(网页json);
+				地址=网页数组[0];
+			}
+			if (延时<20)
+			{
+				地址=document.getElementById("地址").value;
+			}
+			网页数组.splice(0,0,地址);
+		}
+		// 输出
+		{
+			新网页数组=[" "];
+			总数=网页数组.length;
+			if(总数>20)
+			{
+				总数=20;
+			}
+			计数=0;
+			while (计数<总数 )
+			{
+				新总数=新网页数组.length;
+				if(新总数>20)
+				{
+					新总数=20;
+				}
+				新计数=0;
+				while(新计数<新总数 )
+				{
+					if(网页数组[计数]==null || 新网页数组[新计数]==网页数组[计数] )
+					{
+						新计数=网页数组.length+1;
+					}
+					新计数++;
+				}
+				
+			if(新计数==新网页数组.length)
+			{
+				新网页数组.push(网页数组[计数]);
+				var 块 = document.createElement('a');
+				块.setAttribute("id" , 新网页数组[新网页数组.length-1]);
+				块.setAttribute("href" , 新网页数组[新网页数组.length-1]);
+				块.innerHTML = 新网页数组[新网页数组.length-1];""
+				//块.setAttribute(onclick,'路径('+网页对象[计数]+')');
+				document.getElementById('跳转').appendChild(块);
+				document.getElementById('跳转').innerHTML=document.getElementById('跳转').innerHTML+"<br />";
+			}
+				
+				计数++;
+			}
+			网页数组=新网页数组;
+			网页json=JSON.stringify(网页数组);
+			转URL=encodeURI(网页json);//原文转URL
+			while (转URL.length > 4000 )
+			{
+				网页数组.splice(-1,1);
+				网页json=JSON.stringify(网页数组);
+				转URL=encodeURI(网页json);//原文转URL
+			}
+			存cookie = "URL=" + 转URL + "; expires=Thu, 18 Dec 3000 12:00:00 GMT; path=/" ;
+			document.cookie=存cookie;
+			if(地址==" ")
+			{
+				document.getElementById("地址").value="http://192.168.0.1:80";
+			}
+			else
+			{
+				document.getElementById("地址").value=地址;
+			}
+			
+	if (延时<20)
+	{
+		跳转=延时+";url="+地址;
+		var 组件= document.createElement("meta");
+		组件.setAttribute("http-equiv", "refresh");
+		组件.setAttribute("content", 跳转);
+		document.head.appendChild(组件);
+	}
+	if (延时>350)
+	{
+		跳转模块=document.getElementById("跳转");
+		跳转模块.setAttribute("style", "visible:hidden;");
+		跳转模块.setAttribute("style", "diaplay:none;");
+		跳转模块.setAttribute("style", "height:0px;");
+	}
+		
+		
+	}
+	// 调试
+		//alert("跳转"+延时);
+		调试输出.innerHTML="调试"+调试;
+	}
+}
+跳转(180);
+		
+		
+	</script>
+</html>
